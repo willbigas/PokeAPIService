@@ -16,26 +16,24 @@ import java.util.List;
 @DisplayName("Tests for Pokemon Service")
 class PokemonServiceTest {
 
-    @Mock
+    @InjectMocks
     private PokemonService pokemonService;
+
+    @Mock
+    private PokemonServer pokemonServer;
 
     @BeforeEach
     void setup() {
-        BDDMockito.when(pokemonService.findByName(Mockito.eq("charizard")))
-                .thenReturn(List.of(new Pokemon("charizard", "url.com.br")));
-
-        BDDMockito.when(pokemonService.findByName(Mockito.eq("pikachu")))
-                .thenReturn(List.of(new Pokemon("pikachu", "url.com.br")));
-
-        BDDMockito.when(pokemonService.findByName(Mockito.eq("i")))
-                .thenReturn(List.of(new Pokemon("pikachu", "url.com.br"), new Pokemon("charizard", "url.com.br")));
+        BDDMockito.when(pokemonServer.getPokemons())
+                .thenReturn(List.of(new Pokemon("aron", "url.com.br"), new Pokemon("abra", "url.com.br")));
     }
 
     @Test
-    @DisplayName("findByName retorna um pokemon quando pesquisa por charizard")
+    @DisplayName("findByName retorna o pokemon aron quando pesquisa por ar")
     void findByName_RetornaUmPokemon_QuandoPesquisaPorCharizard() {
-        String nomeDoPokemon = "charizard";
-        List<Pokemon> pokemons = pokemonService.findByName(nomeDoPokemon);
+        String nomeDoPokemon = "aron";
+        List<Pokemon> pokemons = pokemonService.findByName("ar");
+        pokemons = pokemonService.setHighlight(pokemons, "ar");
 
         Assertions.assertThat(pokemons)
                 .isNotNull()
@@ -47,11 +45,11 @@ class PokemonServiceTest {
     }
 
     @Test
-    @DisplayName("findByName retorna uma lista de pokemon quando pesquisa por i ordenado por nome")
+    @DisplayName("findByName retorna uma lista de pokemon quando pesquisa por a ordenado por tamanho e depois por nome")
     void findByName_RetornaUmaListaDePokemon_QuandoPesquisaPorI() {
-        String texto = "i";
-        String nomeDoPrimeiroPokemon = "pikachu";
-        String nomeDoSegundoPokemon = "charizard";
+        String texto = "a";
+        String nomeDoPrimeiroPokemon = "abra";
+        String nomeDoSegundoPokemon = "aron";
         List<Pokemon> pokemons = pokemonService.findByName(texto);
 
         Assertions.assertThat(pokemons)
