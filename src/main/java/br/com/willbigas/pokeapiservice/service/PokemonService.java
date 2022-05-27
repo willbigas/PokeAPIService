@@ -22,14 +22,14 @@ public class PokemonService {
     }
 
     public List<Pokemon> findAll() {
-        if (isNullOrEmpty()) {
+        if (listOfPokemonsIsNullOrEmpty()) {
             PokemonResponseDTO responseDTO = pokemonServer.criarRequisicao();
             pokemonServer.processarRequisicao(responseDTO);
         }
         return pokemonServer.getPokemons();
     }
 
-    private boolean isNullOrEmpty() {
+    private boolean listOfPokemonsIsNullOrEmpty() {
         return pokemonServer.getPokemons() == null || pokemonServer.getPokemons().isEmpty();
     }
 
