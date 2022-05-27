@@ -19,7 +19,6 @@ class PokemonServerTest {
     }
 
 
-
     @Test
     void deveRetornarUmaResponseDTOAoRequisitarEndpointDaAPI() {
         PokemonResponseDTO responseDTO =  pokemonServer.criarRequisicao();

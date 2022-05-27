@@ -1,6 +1,6 @@
 package br.com.willbigas.pokeapiservice.server;
 
-import br.com.willbigas.pokeapiservice.entity.Pokemon;
+import br.com.willbigas.pokeapiservice.entity.model.Pokemon;
 import br.com.willbigas.pokeapiservice.entity.dto.PokemonResponseDTO;
 import br.com.willbigas.pokeapiservice.entity.dto.Result;
 import org.springframework.core.ParameterizedTypeReference;
