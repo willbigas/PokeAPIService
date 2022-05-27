@@ -22,24 +22,38 @@ public class PokemonService {
     }
 
     public List<Pokemon> findAll() {
-        if (pokemonServer.getPokemons() == null || pokemonServer.getPokemons().isEmpty()) {
+        if (isNullOrEmpty()) {
             PokemonResponseDTO responseDTO = pokemonServer.criarRequisicao();
             pokemonServer.processarRequisicao(responseDTO);
         }
         return pokemonServer.getPokemons();
     }
 
+    private boolean isNullOrEmpty() {
+        return pokemonServer.getPokemons() == null || pokemonServer.getPokemons().isEmpty();
+    }
+
     public List<Pokemon> findByName(String name) {
         List<Pokemon> pokemons = findAll();
-        pokemons = pokemons.stream().filter(p -> p.getNome().toLowerCase().startsWith(name.toLowerCase())).toList();
+
+        pokemons = pokemons.stream()
+                .filter(p -> p.getNome().toLowerCase().startsWith(name.toLowerCase())).toList();
         pokemons = setHighlight(pokemons, name);
         pokemons = ordenar(pokemons);
+
         return pokemons;
     }
 
+    /**
+     * Varre as letras de cada nome do pokemon e atribui as tags '<pre> </pre>'
+     *
+     * @param pokemons
+     * @param highlight
+     * @return
+     */
     public List<Pokemon> setHighlight(List<Pokemon> pokemons, String highlight) {
 
-        int tamanhoDoHighlight = highlight.length();
+        int quantidadeDeLetrasDoHighlight = highlight.length();
 
         pokemons.forEach(p -> {
 
@@ -49,7 +63,7 @@ public class PokemonService {
             for (int i = 0; i < p.getNome().length(); i++) {
                 char letraDoNomeDoPokemon = p.getNome().charAt(i);
 
-                if (i == tamanhoDoHighlight) {
+                if (i == quantidadeDeLetrasDoHighlight) {
                     nomeFormatado.append("</pre>");
                 }
 
@@ -64,6 +78,15 @@ public class PokemonService {
         return pokemons;
     }
 
+    /**
+     * Cria multiplas ordenacoes para a lista do pokemon
+     *
+     * 1 -> Comprimento do nome do Pokémon em ordem crescente;
+     * 2 -> Ordem alfabética do nome do Pokémon.
+     *
+     * @param pokemons
+     * @return
+     */
     public List<Pokemon> ordenar(List<Pokemon> pokemons) {
 
         List<Pokemon> listaOrdenada = new ArrayList<>(pokemons);

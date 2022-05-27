@@ -18,8 +18,10 @@ class PokemonServerTest {
         pokemonServer = new PokemonServer();
     }
 
+
+
     @Test
-    void deveRetornarPokemonsAoDarGetNaAPI() {
+    void deveRetornarUmaResponseDTOAoRequisitarEndpointDaAPI() {
         PokemonResponseDTO responseDTO =  pokemonServer.criarRequisicao();
         pokemonServer.processarRequisicao(responseDTO);
         Assertions.assertThat( pokemonServer.getPokemons())
