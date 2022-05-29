@@ -1,6 +1,6 @@
 package br.com.willbigas.pokeapiservice.controller;
 
-import br.com.willbigas.pokeapiservice.entity.model.Pokemon;
+import br.com.willbigas.pokeapiservice.entity.Pokemon;
 import br.com.willbigas.pokeapiservice.service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

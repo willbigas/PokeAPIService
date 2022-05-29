@@ -9,19 +9,19 @@ import org.mockito.InjectMocks;
 
 @DisplayName("Tests for Pokemon API")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class PokemonServerTest {
+class PokeAPIServerTest {
 
     @InjectMocks
-    private static PokemonServer pokemonServer;
+    private static PokeAPIServer pokeAPIServer;
 
     @BeforeAll
     public static void beforeAll() {
-        pokemonServer = new PokemonServer();
+        pokeAPIServer = new PokeAPIServer();
     }
 
     @Test
     void deveRetornarUmaResponseDTOAoRequisitarEndpointDaAPI() {
-        Assertions.assertThat(pokemonServer.getResults())
+        Assertions.assertThat(pokeAPIServer.getResults())
                 .isNotNull()
                 .isNotEmpty();
 

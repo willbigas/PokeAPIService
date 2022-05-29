@@ -1,7 +1,7 @@
 package br.com.willbigas.pokeapiservice.server;
 
-import br.com.willbigas.pokeapiservice.entity.dto.PokemonResponseDTO;
-import br.com.willbigas.pokeapiservice.entity.dto.Result;
+import br.com.willbigas.pokeapiservice.server.dto.PokemonResponseDTO;
+import br.com.willbigas.pokeapiservice.server.dto.Result;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +17,13 @@ import java.util.List;
  * Classe será instanciada e executada, assim que a aplicação subir.
  */
 @Component
-public class PokemonServer {
+public class PokeAPIServer {
 
     public static final String URL_PATH_GET_ALL_POKEMONS = "https://pokeapi.co/api/v2/pokemon/?limit=100000&offset=0";
     private final List<Result> results = new ArrayList<>();
     private Boolean requestFeito = false;
 
-    public PokemonServer() {
+    public PokeAPIServer() {
 
         if (!requestFeito) {
             PokemonResponseDTO responseDTO = createRequest();

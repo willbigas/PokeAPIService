@@ -1,7 +1,7 @@
 package br.com.willbigas.pokeapiservice.service;
 
-import br.com.willbigas.pokeapiservice.PokemonRepository;
-import br.com.willbigas.pokeapiservice.entity.model.Pokemon;
+import br.com.willbigas.pokeapiservice.repository.PokemonRepository;
+import br.com.willbigas.pokeapiservice.entity.Pokemon;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

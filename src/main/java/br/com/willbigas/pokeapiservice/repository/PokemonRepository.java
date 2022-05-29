@@ -1,8 +1,8 @@
-package br.com.willbigas.pokeapiservice;
+package br.com.willbigas.pokeapiservice.repository;
 
-import br.com.willbigas.pokeapiservice.entity.dto.Result;
-import br.com.willbigas.pokeapiservice.entity.model.Pokemon;
-import br.com.willbigas.pokeapiservice.server.PokemonServer;
+import br.com.willbigas.pokeapiservice.server.dto.Result;
+import br.com.willbigas.pokeapiservice.entity.Pokemon;
+import br.com.willbigas.pokeapiservice.server.PokeAPIServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,18 +13,18 @@ import java.util.List;
 public class PokemonRepository {
 
 
-    private final PokemonServer pokemonServer;
+    private final PokeAPIServer pokeAPIServer;
 
     private final List<Pokemon> pokemons = new ArrayList<>();
 
     @Autowired
-    public PokemonRepository(PokemonServer pokemonServer) {
-        this.pokemonServer = pokemonServer;
+    public PokemonRepository(PokeAPIServer pokeAPIServer) {
+        this.pokeAPIServer = pokeAPIServer;
     }
 
     public List<Pokemon> findAll() {
         if (pokemons.isEmpty()) {
-            transformResultsToPokemons(pokemonServer.getResults());
+            transformResultsToPokemons(pokeAPIServer.getResults());
         }
         return pokemons;
     }

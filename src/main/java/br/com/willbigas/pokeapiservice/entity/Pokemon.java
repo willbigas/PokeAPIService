@@ -1,4 +1,4 @@
-package br.com.willbigas.pokeapiservice.entity.model;
+package br.com.willbigas.pokeapiservice.entity;
 
 import java.util.Objects;
 

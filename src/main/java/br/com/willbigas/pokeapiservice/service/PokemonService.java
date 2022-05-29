@@ -1,7 +1,7 @@
 package br.com.willbigas.pokeapiservice.service;
 
-import br.com.willbigas.pokeapiservice.PokemonRepository;
-import br.com.willbigas.pokeapiservice.entity.model.Pokemon;
+import br.com.willbigas.pokeapiservice.repository.PokemonRepository;
+import br.com.willbigas.pokeapiservice.entity.Pokemon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

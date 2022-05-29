@@ -1,4 +1,4 @@
-package br.com.willbigas.pokeapiservice.entity.dto;
+package br.com.willbigas.pokeapiservice.server.dto;
 
 import java.util.List;
 
