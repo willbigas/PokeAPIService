@@ -1,7 +1,7 @@
 package br.com.willbigas.pokeapiservice.service;
 
+import br.com.willbigas.pokeapiservice.PokemonRepository;
 import br.com.willbigas.pokeapiservice.entity.model.Pokemon;
-import br.com.willbigas.pokeapiservice.server.PokemonServer;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -20,11 +20,11 @@ class PokemonServiceTest {
     private PokemonService pokemonService;
 
     @Mock
-    private PokemonServer pokemonServer;
+    private PokemonRepository pokemonRepository;
 
     @BeforeEach
     void setup() {
-        BDDMockito.when(pokemonServer.getPokemons())
+        BDDMockito.when(pokemonRepository.findAll())
                 .thenReturn(List.of(new Pokemon("aron"), new Pokemon("abra")));
     }
 

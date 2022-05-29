@@ -1,7 +1,7 @@
 package br.com.willbigas.pokeapiservice.service;
 
+import br.com.willbigas.pokeapiservice.PokemonRepository;
 import br.com.willbigas.pokeapiservice.entity.model.Pokemon;
-import br.com.willbigas.pokeapiservice.server.PokemonServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +13,15 @@ import java.util.List;
 @Service
 public class PokemonService {
 
-    private final PokemonServer pokemonServer;
+    private final PokemonRepository pokemonRepository;
 
     @Autowired
-    public PokemonService(PokemonServer pokemonServer) {
-        this.pokemonServer = pokemonServer;
+    public PokemonService(PokemonRepository pokemonRepository) {
+        this.pokemonRepository = pokemonRepository;
     }
 
     public List<Pokemon> findAll() {
-        return pokemonServer.getPokemons();
+        return pokemonRepository.findAll();
     }
 
     public List<Pokemon> findByName(String name) {

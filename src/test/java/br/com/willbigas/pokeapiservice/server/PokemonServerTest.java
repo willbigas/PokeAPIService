@@ -1,6 +1,5 @@
 package br.com.willbigas.pokeapiservice.server;
 
-import br.com.willbigas.pokeapiservice.entity.dto.PokemonResponseDTO;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +21,7 @@ class PokemonServerTest {
 
     @Test
     void deveRetornarUmaResponseDTOAoRequisitarEndpointDaAPI() {
-        Assertions.assertThat(pokemonServer.getPokemons())
+        Assertions.assertThat(pokemonServer.getResults())
                 .isNotNull()
                 .isNotEmpty();
 

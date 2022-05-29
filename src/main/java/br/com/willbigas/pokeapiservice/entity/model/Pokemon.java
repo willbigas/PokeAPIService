@@ -27,6 +27,7 @@ public class Pokemon {
         this.highlight = highlight;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
