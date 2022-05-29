@@ -27,7 +27,8 @@ public class PokemonService {
     public List<Pokemon> findByName(String name) {
         List<Pokemon> pokemons = findAll();
         pokemons = filterByStartsWithPokemonName(name, pokemons);
-        pokemons = setHighlight(pokemons, name);
+        pokemons = setHighlightWithSubstring(pokemons, name);
+        //        pokemons = setHighlight(pokemons, name);
         pokemons = sort(pokemons);
 
         return pokemons;
@@ -72,9 +73,37 @@ public class PokemonService {
         return pokemons;
     }
 
+
+    /**
+     * Varre as letras com Substring e atribui o código '<pre> </pre>'
+     * @param pokemons
+     * @param highlight
+     * @return
+     */
+    public List<Pokemon> setHighlightWithSubstring(List<Pokemon> pokemons, String highlight) {
+
+        pokemons.forEach(p -> {
+
+            StringBuilder formattedName = new StringBuilder();
+            formattedName.append("<pre>");
+
+            String firstPart = p.getName().substring(0, highlight.length());
+            String secondPart = p.getName().substring(highlight.length());
+
+            formattedName.append(firstPart);
+            formattedName.append("</pre>");
+            formattedName.append(secondPart);
+
+            p.setHighlight(formattedName.toString());
+
+        });
+        return pokemons;
+    }
+
+
     /**
      * Cria multiplas ordenacoes para a lista do pokemon
-     *
+     * <p>
      * 1 -> Comprimento do nome do Pokémon em ordem crescente;
      * 2 -> Ordem alfabética do nome do Pokémon.
      *
