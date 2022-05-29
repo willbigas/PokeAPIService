@@ -3,7 +3,7 @@ API de Pokemons criado para avaliação com base em um desafio técnico para a e
 
 ### [Regras do Desafio](https://github.com/looqbox/looqbox-backend-challenge#readme)
  
-### JDK Utilizado
+### JDK e Dependências
 * JDK 17.0.3 LTS
 * Spring Boot 2.7.0 (spring-boot-starter-web, spring-boot-devtools,spring-boot-starter-test) 
  
