@@ -13,24 +13,20 @@ import java.util.List;
 
 
 /**
- * Serviço de Pokemon
- * Classe será instanciada e executada, assim que a aplicação subir.
+ * Classe responsável por consumir a API -> PokeAPI (https://pokeapi.co/)
+ *
+ * Classe ficará disponivel para consumo após a aplicação subir, guardando o objeto de pokemon na variavel results,
+ * podendo ser chamada de qualquer lugar da aplicação
  */
 @Component
 public class PokeAPIServer {
 
     public static final String URL_PATH_GET_ALL_POKEMONS = "https://pokeapi.co/api/v2/pokemon/?limit=100000&offset=0";
-    private final List<Result> results = new ArrayList<>();
-    private Boolean requestFeito = false;
+    private List<Result> results = new ArrayList<>();
 
     public PokeAPIServer() {
-
-        if (!requestFeito) {
-            PokemonResponseDTO responseDTO = createRequest();
-            processAndTransformRequest(responseDTO);
-            requestFeito = true;
-        }
-
+        PokemonResponseDTO responseDTO = createRequest();
+        results = transformResponseToResults(responseDTO);
     }
 
     private PokemonResponseDTO createRequest() {
@@ -40,8 +36,8 @@ public class PokeAPIServer {
         return exchange.getBody();
     }
 
-    private void processAndTransformRequest(PokemonResponseDTO response) {
-        getResults().addAll(response.getResults().stream().toList());
+    private List<Result> transformResponseToResults(PokemonResponseDTO response) {
+        return new ArrayList<>(response.getResults().stream().toList());
     }
 
     public List<Result> getResults() {
