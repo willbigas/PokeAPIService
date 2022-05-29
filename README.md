@@ -18,13 +18,14 @@ API de Pokemons criado para avaliação técnica com base nos requisitos apresen
 # Observações complementares (decisões de implementação)
 
 * Não usei nenhum tipo de banco de dados, pois na minha opnião não há necessidade com base nos requisitos da aplicação.
-* Criei um repositório em memoria para simular a necessidade de um banco de dados de pokemons, uma abordagem mais performatica seria persistir no banco em operações distintas.
+* Criei um repositório em memoria para simular um banco de dados de pokemons, uma abordagem mais performatica seria persistir no banco e consultar em operações distintas.
 * Não encontrei necessidade de usar outros 'Design Patterns' pelo fato de ser um endpoint simples com uma regra de negocio simples, utilizei **MVC** comum.
-* Não utilizei **Docker**, pois não tenho experiência com **Gradle** e obtive alguns erros na tentativa de implementação, como o gradle é um requisito obrigatório do desafio e o docker não, priorizei o gradle em vez do docker.
+* Não utilizei **Docker** na aplicação, pois não tenho experiência com **Gradle** e obtive alguns erros na tentativa de implementação, como o Gradle é um requisito obrigatório do desafio e o Docker não, priorizei o Gradle em vez do docker.
 
 
-### Todas as decisões foram implementadas de acordo com 3 principios que eu gosto de seguir independente de qualquer arquitetura que estou implementando (Monolito, Microserviços)
+#### Todas as decisões de implementação foram desenvolvidas com base em 3 principios que eu gosto de seguir independente de arquitetura (Monolito, Microserviços, Hexagonal)
 
-* DRY (Don't repeat yourself), 
-* KISS (Keep it simple and stupid)
-* YAGNI (You ain't gonna need it).
+* [DRY (Don't repeat yourself)](https://www.google.com.br/search?q=dry+principle)
+* [KISS (Keep it simple and stupid)](https://www.google.com.br/search?q=kiss+principle)
+* [YAGNI (You ain't gonna need it)](https://www.google.com.br/search?q=yagni+principle)
+
