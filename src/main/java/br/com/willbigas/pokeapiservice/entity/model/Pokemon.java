@@ -4,29 +4,19 @@ import java.util.Objects;
 
 public class Pokemon {
 
-    private String nome;
-    private String url;
+    private String name;
     private String highlight;
 
-    public Pokemon(String nome, String url) {
-        this.nome = nome;
-        this.url = url;
+    public Pokemon(String name) {
+        this.name = name;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getHighlight() {
@@ -42,11 +32,11 @@ public class Pokemon {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pokemon pokemon = (Pokemon) o;
-        return Objects.equals(url, pokemon.url);
+        return Objects.equals(name, pokemon.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(url);
+        return Objects.hash(name);
     }
 }

@@ -25,13 +25,13 @@ class PokemonServiceTest {
     @BeforeEach
     void setup() {
         BDDMockito.when(pokemonServer.getPokemons())
-                .thenReturn(List.of(new Pokemon("aron", "url.com.br"), new Pokemon("abra", "url.com.br")));
+                .thenReturn(List.of(new Pokemon("aron"), new Pokemon("abra")));
     }
 
     @Test
-    @DisplayName("findByName retorna o pokemon aron quando pesquisa por ar")
-    void findByName_RetornaUmPokemon_QuandoPesquisaPorCharizard() {
-        String nomeDoPokemon = "aron";
+    @DisplayName("findByName return pokemon 'aron' when find by 'ar'")
+    void findByName_returnPokemonAron_WhenFindByNameAr() {
+        String pokemonName = "aron";
         List<Pokemon> pokemons = pokemonService.findByName("ar");
         pokemons = pokemonService.setHighlight(pokemons, "ar");
 
@@ -40,33 +40,33 @@ class PokemonServiceTest {
                 .isNotEmpty()
                 .hasSize(1);
 
-        Assertions.assertThat(pokemons.get(0).getNome()).isEqualTo(nomeDoPokemon);
+        Assertions.assertThat(pokemons.get(0).getName()).isEqualTo(pokemonName);
 
     }
 
     @Test
     @DisplayName("findByName retorna uma lista de pokemon quando pesquisa por a ordenado por tamanho e depois por nome")
-    void findByName_RetornaUmaListaDePokemon_QuandoPesquisaPorI() {
-        String texto = "a";
-        String nomeDoPrimeiroPokemon = "abra";
-        String nomeDoSegundoPokemon = "aron";
-        List<Pokemon> pokemons = pokemonService.findByName(texto);
+    void findByName_ReturnListOrderBy_WhenFindByI() {
+        String text = "a";
+        String nameOfTheFirstPokemon = "abra";
+        String nameOfTheSecondPokemon = "aron";
+        List<Pokemon> pokemons = pokemonService.findByName(text);
 
         Assertions.assertThat(pokemons)
                 .isNotNull()
                 .isNotEmpty()
                 .hasSize(2);
 
-        Assertions.assertThat(pokemons.get(0).getNome()).isEqualTo(nomeDoPrimeiroPokemon);
-        Assertions.assertThat(pokemons.get(1).getNome()).isEqualTo(nomeDoSegundoPokemon);
+        Assertions.assertThat(pokemons.get(0).getName()).isEqualTo(nameOfTheFirstPokemon);
+        Assertions.assertThat(pokemons.get(1).getName()).isEqualTo(nameOfTheSecondPokemon);
 
     }
 
     @Test
-    @DisplayName("findByName retorna vazio quando pesquisa por abc")
-    void findByName_RetornaVazio_QuandoPesquisaPorAbc() {
-        String nomeDoPokemon = "abc";
-        List<Pokemon> pokemons = pokemonService.findByName(nomeDoPokemon);
+    @DisplayName("findByName return empty when find by 'abc'")
+    void findByName_RetunsEmpty_WhenFindABC() {
+        String nameOfThePokemon = "abc";
+        List<Pokemon> pokemons = pokemonService.findByName(nameOfThePokemon);
 
         Assertions.assertThat(pokemons)
                 .isEmpty();

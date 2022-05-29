@@ -6,11 +6,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.mockito.InjectMocks;
 
 @DisplayName("Tests for Pokemon API")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class PokemonServerTest {
 
+    @InjectMocks
     private static PokemonServer pokemonServer;
 
     @BeforeAll
@@ -18,12 +20,9 @@ class PokemonServerTest {
         pokemonServer = new PokemonServer();
     }
 
-
     @Test
     void deveRetornarUmaResponseDTOAoRequisitarEndpointDaAPI() {
-        PokemonResponseDTO responseDTO =  pokemonServer.criarRequisicao();
-        pokemonServer.processarRequisicao(responseDTO);
-        Assertions.assertThat( pokemonServer.getPokemons())
+        Assertions.assertThat(pokemonServer.getPokemons())
                 .isNotNull()
                 .isNotEmpty();
 

@@ -1,7 +1,6 @@
 package br.com.willbigas.pokeapiservice.service;
 
 import br.com.willbigas.pokeapiservice.entity.model.Pokemon;
-import br.com.willbigas.pokeapiservice.entity.dto.PokemonResponseDTO;
 import br.com.willbigas.pokeapiservice.server.PokemonServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,26 +21,21 @@ public class PokemonService {
     }
 
     public List<Pokemon> findAll() {
-        if (listOfPokemonsIsNullOrEmpty()) {
-            PokemonResponseDTO responseDTO = pokemonServer.criarRequisicao();
-            pokemonServer.processarRequisicao(responseDTO);
-        }
         return pokemonServer.getPokemons();
-    }
-
-    private boolean listOfPokemonsIsNullOrEmpty() {
-        return pokemonServer.getPokemons() == null || pokemonServer.getPokemons().isEmpty();
     }
 
     public List<Pokemon> findByName(String name) {
         List<Pokemon> pokemons = findAll();
-
-        pokemons = pokemons.stream()
-                .filter(p -> p.getNome().toLowerCase().startsWith(name.toLowerCase())).toList();
+        pokemons = filterByStartsWithPokemonName(name, pokemons);
         pokemons = setHighlight(pokemons, name);
-        pokemons = ordenar(pokemons);
+        pokemons = sort(pokemons);
 
         return pokemons;
+    }
+
+    private List<Pokemon> filterByStartsWithPokemonName(String name, List<Pokemon> pokemons) {
+        return pokemons.stream()
+                .filter(p -> p.getName().toLowerCase().startsWith(name.toLowerCase())).toList();
     }
 
     /**
@@ -57,19 +51,19 @@ public class PokemonService {
 
         pokemons.forEach(p -> {
 
-            StringBuilder nomeFormatado = new StringBuilder();
-            nomeFormatado.append("<pre>");
+            StringBuilder formattedName = new StringBuilder();
+            formattedName.append("<pre>");
 
-            for (int i = 0; i < p.getNome().length(); i++) {
-                char letraDoNomeDoPokemon = p.getNome().charAt(i);
+            for (int i = 0; i < p.getName().length(); i++) {
+                char letterOfPokemonName = p.getName().charAt(i);
 
                 if (i == quantidadeDeLetrasDoHighlight) {
-                    nomeFormatado.append("</pre>");
+                    formattedName.append("</pre>");
                 }
 
-                nomeFormatado.append(letraDoNomeDoPokemon);
+                formattedName.append(letterOfPokemonName);
             }
-            p.setHighlight(nomeFormatado.toString());
+            p.setHighlight(formattedName.toString());
 
             if (!p.getHighlight().contains("</pre>")) {
                 p.setHighlight(p.getHighlight() + "</pre>");
@@ -87,27 +81,27 @@ public class PokemonService {
      * @param pokemons
      * @return
      */
-    public List<Pokemon> ordenar(List<Pokemon> pokemons) {
+    public List<Pokemon> sort(List<Pokemon> pokemons) {
 
-        List<Pokemon> listaOrdenada = new ArrayList<>(pokemons);
+        List<Pokemon> orderList = new ArrayList<>(pokemons);
 
-        Collections.sort(listaOrdenada, new Comparator() {
+        Collections.sort(orderList, new Comparator() {
 
             public int compare(Object o1, Object o2) {
 
-                Integer x1 = ((Pokemon) o1).getNome().length();
-                Integer x2 = ((Pokemon) o2).getNome().length();
+                Integer x1 = ((Pokemon) o1).getName().length();
+                Integer x2 = ((Pokemon) o2).getName().length();
                 int lengthComparator = x1.compareTo(x2);
 
                 if (lengthComparator != 0) {
                     return lengthComparator;
                 }
 
-                String s1 = ((Pokemon) o1).getNome();
-                String s2 = ((Pokemon) o2).getNome();
+                String s1 = ((Pokemon) o1).getName();
+                String s2 = ((Pokemon) o2).getName();
                 return s1.compareTo(s2);
             }
         });
-        return listaOrdenada;
+        return orderList;
     }
 }
