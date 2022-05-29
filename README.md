@@ -15,3 +15,7 @@ Api de Pokemons criado para avaliação de teste tecnico da empresa LooqBox
 ![Screenshot](DIAGRAMA-ARQUITETURAL.png)
 
 
+# Observações complementares
+
+* Não usei nenhum tipo de banco de dados, pois na minha opnião não há necessidade com base nas necessidades.
+* Tambem não utilizei nenhum pattern complexo, somente MVC comum, pois tbm não achei que havia necessidade pelo fato de ser um endpoint simples com uma regra de negocio simples.
