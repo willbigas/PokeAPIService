@@ -47,7 +47,7 @@ public class PokemonService {
      */
     public List<Pokemon> setHighlight(List<Pokemon> pokemons, String highlight) {
 
-        int quantidadeDeLetrasDoHighlight = highlight.length();
+        int lengthOfHighlight = highlight.length();
 
         pokemons.forEach(p -> {
 
@@ -57,7 +57,7 @@ public class PokemonService {
             for (int i = 0; i < p.getName().length(); i++) {
                 char letterOfPokemonName = p.getName().charAt(i);
 
-                if (i == quantidadeDeLetrasDoHighlight) {
+                if (i == lengthOfHighlight) {
                     formattedName.append("</pre>");
                 }
 
