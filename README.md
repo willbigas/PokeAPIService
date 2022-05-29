@@ -1,5 +1,5 @@
 # PokeAPIService
-Api de Pokemons criado para avaliação de teste tecnico da empresa LooqBox
+API de Pokemons criado para avaliação com base em um desafio técnico para a empresa LooqBox
 
 ### [Regras do Desafio](https://github.com/looqbox/looqbox-backend-challenge#readme)
  
