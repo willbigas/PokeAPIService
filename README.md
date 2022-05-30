@@ -12,7 +12,7 @@
   * Depois : `docker run --name poke-api-service -p 8080:8080 poke-api-service`
 
 #### docker-compose:
-  * Rodar no Terminal `docker-compose up`
+  * Rodar no Terminal `docker-compose up -d`
  
 
 
