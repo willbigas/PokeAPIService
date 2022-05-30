@@ -45,7 +45,7 @@ class PokemonServiceTest {
     }
 
     @Test
-    @DisplayName("findByName retorna uma lista de pokemon quando pesquisa por a ordenado por tamanho e depois por nome")
+    @DisplayName("findByName return pokemon list order by lenght and alphatical name")
     void findByName_ReturnListOrderBy_WhenFindByI() {
         String text = "a";
         String nameOfTheFirstPokemon = "abra";

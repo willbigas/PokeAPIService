@@ -1,11 +1,15 @@
 package br.com.willbigas.pokeapiservice.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Pokemon {
+public class Pokemon implements Serializable {
 
     private String name;
     private String highlight;
+
+    public Pokemon() {
+    }
 
     public Pokemon(String name) {
         this.name = name;
