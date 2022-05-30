@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  pokemon-service:
+    image: poke-api-service
+    container_name: poke-api-service
+    build:
+      context: .
+    ports:
+      - '8080:8080'
