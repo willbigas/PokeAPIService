@@ -36,6 +36,7 @@
 * Não usei nenhum tipo de banco de dados, pois na minha opnião não há necessidade com base nos requisitos da aplicação.
 * Criei um repositório em memoria para simular um banco de dados de pokemons, uma abordagem mais performatica seria persistir no banco e consultar em operações distintas.
 * Não encontrei necessidade de usar outros 'Design Patterns' pelo fato de ser um endpoint simples com uma regra de negocio simples, utilizei **MVC** comum.
+* Foram criado Testes unitários e de integração para todas as camadas.
 
 
 #### Todas as decisões de implementação foram desenvolvidas com base em 3 principios que eu gosto de seguir independente de arquitetura (Monolito, Microserviços, Hexagonal)
