@@ -1,5 +1,5 @@
 # PokeAPIService
-API de Pokemons criado para avaliação técnica com base nos requisitos apresentados pela empresa LooqBox
+##### API de Pokemons criado para avaliação técnica com base nos requisitos apresentados pela empresa LooqBox
 
 #### [Regras do Desafio](https://github.com/looqbox/looqbox-backend-challenge#readme)
 
@@ -20,6 +20,9 @@ API de Pokemons criado para avaliação técnica com base nos requisitos apresen
 * JDK 17.0.3 LTS
 * Spring Boot 2.7.0 (spring-boot-starter-web, spring-boot-devtools,spring-boot-starter-test) 
  
+ 
+## Informações complementares
+
 #### Endpoint principal
 * http://localhost:8080/pokemons?name={nome-do-pokemon}
 * Exemplo -> http://localhost:8080/pokemons?name=pidge 
@@ -28,7 +31,7 @@ API de Pokemons criado para avaliação técnica com base nos requisitos apresen
 ![Screenshot](DIAGRAMA-ARQUITETURAL.png)
 
 
-# Observações complementares (decisões de implementação)
+## Observações complementares (decisões de implementação)
 
 * Não usei nenhum tipo de banco de dados, pois na minha opnião não há necessidade com base nos requisitos da aplicação.
 * Criei um repositório em memoria para simular um banco de dados de pokemons, uma abordagem mais performatica seria persistir no banco e consultar em operações distintas.
