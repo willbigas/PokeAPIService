@@ -38,10 +38,3 @@
 * Não encontrei necessidade de usar outros 'Design Patterns' pelo fato de ser um endpoint simples com uma regra de negocio simples, utilizei **MVC** comum.
 * Foram criado Testes unitários e de integração para todas as camadas.
 
-
-#### Todas as decisões de implementação foram desenvolvidas com base em 3 principios que eu gosto de seguir independente de arquitetura (Monolito, Microserviços, Hexagonal)
-
-* [DRY (Don't repeat yourself)](https://www.google.com.br/search?q=dry+principle)
-* [KISS (Keep it simple and stupid)](https://www.google.com.br/search?q=kiss+principle)
-* [YAGNI (You ain't gonna need it)](https://www.google.com.br/search?q=yagni+principle)
-
